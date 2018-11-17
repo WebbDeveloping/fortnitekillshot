@@ -1,28 +1,55 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
+import { connect } from "react-redux";
+import { userLoggedIn } from "./redux/reducer";
+import { HashRouter } from "react-router-dom";
+
+import { Route, Switch } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoading: false
+    };
+  }
+
+  componentDidMount() {
+    axios.get("/auth/currentUser").then(response => {
+      if (response.data) {
+        this.props.userLoggedIn(response.data);
+      }
+
+      this.setState({
+        isLoading: false
+      });
+    });
+  }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+    return this.state.isLoading ? (
+      <div />
+    ) : (
+      <HashRouter>
+        <div>
+          <Header />
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/Profile" component={Profile} />
+          </Switch>
+        </div>
+      </HashRouter>
     );
   }
 }
 
-export default App;
+export default connect(
+  null,
+  { userLoggedIn }
+)(App);
