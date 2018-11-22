@@ -3,7 +3,6 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-//dont forget to go to redux/reducer page and fill that shit out.
 import { userLoggedIn } from "../redux/reducer";
 
 class Login extends Component {
@@ -25,7 +24,6 @@ class Login extends Component {
   };
 
   handleClick = () => {
-    console.log("something");
     axios
       .post("/auth/login", this.state)
       .then(response => {
@@ -35,7 +33,7 @@ class Login extends Component {
       .catch(err => {
         console.log(err.response);
         this.setState({
-          error: err.response.data
+          error: err
         });
       });
   };

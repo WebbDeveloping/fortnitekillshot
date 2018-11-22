@@ -26,6 +26,9 @@ class Header extends Component {
         <div id="logo">
           <h1>KillShot</h1>
         </div>
+        <button>
+          <Link to="/allvideos">ALL VIDEOS</Link>
+        </button>
         {this.props.isAuthenticated ? (
           <button onClick={this.logout}>Logout</button>
         ) : (

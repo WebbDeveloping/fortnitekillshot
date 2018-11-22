@@ -7,6 +7,8 @@ import { userLoggedIn } from "./redux/reducer";
 import { HashRouter } from "react-router-dom";
 
 import { Route, Switch } from "react-router-dom";
+import AllVideos from "./components/AllVideos";
+
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Header from "./components/Header";
@@ -42,6 +44,9 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/Profile" component={Profile} />
+
+            <Route path="/AllVideos" component={AllVideos} />
+            {/* possibly fix this route to the all videos??? */}
           </Switch>
         </div>
       </HashRouter>

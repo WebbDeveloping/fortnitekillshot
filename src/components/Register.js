@@ -39,7 +39,6 @@ class Register extends Component {
       });
   };
   render() {
-    console.log(this.state);
     return this.props.isAuthenticated ? (
       <Redirect to="/Profile" />
     ) : (
