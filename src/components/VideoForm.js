@@ -30,7 +30,7 @@ class VideoForm extends Component {
       //console.log
       console.log(1111, response.data);
       // ZACH - Update either this function (setVideos) right here so it updates userVideo on redux state or use a different function to do that.
-      this.props.setVideo(response.data);
+      this.props.getUserVideo(response.data);
       // console.log(654, response.data);
       //JOE- I update thw above line from set videos to getUserVideo
       this.setState({

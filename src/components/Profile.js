@@ -17,7 +17,7 @@ class Profile extends Component {
       this.props.getUserVideo(response.data);
       //console.log
       // console.log(123, this.props.user.id);
-      // console.log(666, response.data);
+      console.log(666, response.data);
     });
   }
   render() {
