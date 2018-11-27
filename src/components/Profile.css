@@ -1,0 +1,20 @@
+.profile-pic {
+  margin-right: 5em;
+}
+.social-links {
+  margin-top: 2em;
+  margin-right: 5em;
+}
+.video-form {
+  float: right;
+  margin: 0 1em 1em 0;
+  height: 50%;
+  width: 50%;
+}
+
+.videos-component {
+  float: left;
+
+  margin-left: 10em;
+  margin-bottom: 10em;
+}

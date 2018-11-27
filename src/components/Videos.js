@@ -6,6 +6,9 @@ import axios from "axios";
 
 import { setVideos } from "../redux/reducer";
 import { getUserVideo } from "../redux/reducer";
+// import { Player, ControlBar } from "video-react";
+import ReactPlayer from "react-player";
+import "./Videos.css";
 
 class Videos extends Component {
   // componentDidMount() {
@@ -31,29 +34,42 @@ class Videos extends Component {
 
     return (
       <div>
-        {this.props.isAuthenticated && <VideoForm />}
+        {this.props.isAuthenticated}
         {/* ZACH - You are currently mapping through userVideo coming from mapStateToProps. This is getting populated on the component did mount of the Profile component. */}
         <h6>return in the videos component</h6>
         {/* what is this video in the arrow function below?? its the whole table from the user_video_link */}
         {this.props.userVideo.map(video => {
           return (
             <div key={video.user_id.video_url}>
-              {/* <div key={video.video_url}> */}
-              {/* <div key={user_id.video_url}> */}
-              {/* //why the shit is video_url defined but user_id is not????? */}
-              {console.log(555, video)}
               <Link to={`/videos/${video.id}`}>
-                <h1>{video.video_url}</h1>
+                {/* <iframe>
+                  <Player autoPlay src={video.video_url}>
+                    <ControlBar autoHide={true} className="my-class" />
+                  </Player>
+                </iframe> */}
+                {/* <ReactPlayer url={video.video_url} loop={true} /> */}
+                <div className="player-wrapper">
+                  <ReactPlayer
+                    className="react-player"
+                    url={video.video_url}
+                    width="100%"
+                    height="100%"
+                    playing
+                    // be sure to remove this playing & loop when i am done
+                    loop="true"
+                  />
+                </div>
               </Link>
-              {/* //console.log */}
-              {console.log(323, video.video_url)}
+
               {+this.props.user.id === +video.user_id && (
                 <div>
-                  <button>Update</button>
+                  {/* <button>Update</button> */}
 
                   <button
                     onClick={() => {
+                      // video.id is defined... butvideoS.id is not?? i thought it was videoS in the delete function?
                       axios.delete(`/api/videos/${video.id}`).then(response => {
+                        console.log(6969, response.data);
                         this.props.setVideos(response.data);
                       });
                     }}

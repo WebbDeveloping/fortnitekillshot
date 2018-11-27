@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Grid, Col } from "react-bootstrap";
 
 import { userLoggedIn } from "../redux/reducer";
 
@@ -43,23 +44,27 @@ class Login extends Component {
       <Redirect to="/Profile" />
     ) : (
       <div>
-        <h1>Login</h1>
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="password"
-          placeholder="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleClick}>Submit</button>
-        {this.state.error}
+        <Grid>
+          <Col xs={12} sm={8} smOffset={2}>
+            <h1>Login</h1>
+            <input
+              type="text"
+              name="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <button onClick={this.handleClick}>Submit</button>
+            {this.state.error}
+          </Col>
+        </Grid>
       </div>
     );
   }

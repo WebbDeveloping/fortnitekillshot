@@ -5,6 +5,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { userLoggedIn } from "./redux/reducer";
 import { HashRouter } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 import { Route, Switch } from "react-router-dom";
 import AllVideos from "./components/AllVideos";
@@ -40,6 +41,7 @@ class App extends Component {
       <HashRouter>
         <div>
           <Header />
+          {/* <Navbar /> */}
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

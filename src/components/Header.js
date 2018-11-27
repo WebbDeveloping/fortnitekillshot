@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { userLoggedOut } from "../redux/reducer";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from "react-bootstrap";
 
 class Header extends Component {
   logout = () => {
@@ -14,28 +15,65 @@ class Header extends Component {
   render() {
     return (
       <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderBottom: "1px solid black",
-          height: "90px",
-          padding: "40px"
-        }}
+      // style={{
+      //   display: "flex",
+      //   justifyContent: "space-between",
+      //   alignItems: "center",
+      //   borderBottom: "1px solid black",
+      //   height: "90px",
+      //   padding: "40px"
+      // }}
       >
-        <div id="logo">
-          <h1>KillShot</h1>
-        </div>
-        <button>
-          <Link to="/allvideos">ALL VIDEOS</Link>
-        </button>
-        {this.props.isAuthenticated ? (
-          <button onClick={this.logout}>Logout</button>
-        ) : (
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#Profile">KillShot</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1} href="#AllVideos">
+                AllVideos
+              </NavItem>
+              <NavItem eventKey={2} href="#">
+                Link
+              </NavItem>
+              <NavDropdown
+                eventKey={3}
+                title="Dropdown"
+                id="basic-nav-dropdown"
+              >
+                <MenuItem eventKey={3.1}>Action</MenuItem>
+                <MenuItem eventKey={3.2}>Another action</MenuItem>
+                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                <MenuItem divider />
+                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+              </NavDropdown>
+            </Nav>
+            <Nav pullRight>
+              <NavItem eventKey={1} href="#register">
+                Register
+              </NavItem>
+              {this.props.isAuthenticated ? (
+                <NavItem onClick={this.logout}>Logout</NavItem>
+              ) : (
+                <NavItem>
+                  <Link to="/login">login</Link>
+                </NavItem>
+              )}
+              {/* <NavItem eventKey={2} href="#login">
+                Login
+              </NavItem> */}
+            </Nav>
+          </Navbar.Collapse>
+          {/* <div id="logo">
+            <Link to="/Profile">KillShot</Link>
+          </div>
           <button>
-            <Link to="/login">login</Link>
-          </button>
-        )}
+            <Link to="/allvideos">ALL VIDEOS</Link>
+          </button> */}
+        </Navbar>
       </div>
     );
   }

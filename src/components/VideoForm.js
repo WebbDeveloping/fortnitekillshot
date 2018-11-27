@@ -8,64 +8,91 @@ class VideoForm extends Component {
   constructor() {
     super();
     this.state = {
-      video_url: ""
+      file: ""
     };
   }
-  //where is video_url holding data?
+  //where is file holding data?
   //in the user_video_link table
 
-  handleChange = e => {
-    let { name, value } = e.target;
+  // handleChange = e => {
+  //   let { name, value } = e.target;
 
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
+
+  // handleClick = () => {
+  //   //  - In here you are submitting videos, and then you want to update redux state to show the user their videos. YOu'll need to update the backend route that this function is making a request to so that it returns user specific videos (using their id)
+  //   axios.post("/api/videos", this.state).then(response => {
+  //     //i updated the line abouve. to state.userId(not sure waht is was before)
+
+  //     // ZACH - Update either this function (setVideos) right here so it updates userVideo on redux state or use a different function to do that.
+  //     this.props.getUserVideo(response.data);
+  //     this.setState({
+  //       file: ""
+  //     });
+  //   });
+  // };
+
+  fileSelectedHandler = event => {
     this.setState({
-      [name]: value
+      file: event.target.files[0]
     });
   };
 
-  handleClick = () => {
-    //  - In here you are submitting videos, and then you want to update redux state to show the user their videos. YOu'll need to update the backend route that this function is making a request to so that it returns user specific videos (using their id)
-    axios.post("/api/videos", this.state).then(response => {
-      //i updated the line abouve. to state.userId(not sure waht is was before)
-      console.log(1212, this.state);
-      //console.log
-      console.log(1111, response.data);
-      // ZACH - Update either this function (setVideos) right here so it updates userVideo on redux state or use a different function to do that.
-      this.props.getUserVideo(response.data);
-      // console.log(654, response.data);
-      //JOE- I update thw above line from set videos to getUserVideo
-      this.setState({
-        video_url: ""
+  uploadFile = e => {
+    e.preventDefault();
+    const fd = new FormData();
+
+    fd.append("video", this.state.file);
+    axios
+      .post("/api/videos", fd, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        console.log(5555555555555555, response);
       });
-      //console.log
-      console.log(222, this.state);
-    });
   };
 
   render() {
     return (
-      <div>
-        <h1>Submit cool video here in the VideoForm component</h1>
-        <input
-          type="text"
-          name="VideoLink"
-          value={this.state.video_url}
-          onChange={this.handleChange}
-          placeholder="VideoLink"
-        />
-        <textarea
-          name="video_url"
-          cols="30"
-          rows="10"
-          value={this.state.video_url}
-          onChange={this.handleChange}
-        />
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>Submit cool video here.</h1>
 
-        <button onClick={this.handleClick}>Submit</button>
+            {/* <form>
+              <textarea
+                class="text-center"
+                name="file"
+                cols="30"
+                rows="1"
+                value={this.state.file}
+                onChange={this.handleChange}
+              />
+
+              <button onClick={this.handleClick}>Submit</button>
+              <input type="file" onClick={this.uploadFile} />
+              <button onClick={this.handleClick}>Submit</button>
+            </form> */}
+
+            <form onSubmit={this.uploadFile}>
+              <input
+                class="form-control"
+                type="file"
+                onChange={this.fileSelectedHandler}
+              />
+              <button type="submit">upload</button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
 }
-
 export default connect(
   null,
   { setVideos, getUserVideo }

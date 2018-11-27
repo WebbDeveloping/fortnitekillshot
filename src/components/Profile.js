@@ -7,6 +7,7 @@ import Videos from "../components/Videos";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserVideo } from "../redux/reducer";
+import "./Profile.css";
 
 class Profile extends Component {
   componentDidMount() {
@@ -23,14 +24,37 @@ class Profile extends Component {
   render() {
     return this.props.isAuthenticated ? (
       <div>
-        <p>
-          Welcome to KillShot my super dope, super cool, incredibly amazing,
-          freakin awesome website!!!!!!!!!!!! You are now inside your profile.(i
-          actually think its like a comunity type profile?? how do i fix that so
-          each user has thier own??? help? anybody?)
-        </p>
+        <div class="text-right">
+          {/* how do i add margin to this bitch?? */}
+          <h6 className="profile-pic">update profile button?</h6>
+          <h2 className="profile-pic">GamerTag might go here?</h2>
+          <img
+            src="http://via.placeholder.com/300x250"
+            className="profile-pic"
+          />
+          <div className="social-links">
+            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+              Facebook
+            </a>
+            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+              Instagram
+            </a>
+            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+              Twitch
+            </a>
+            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+              Twitter
+            </a>
+          </div>
+        </div>
+        <hr />
 
-        <Videos />
+        <div className="video-form">
+          <VideoForm />
+        </div>
+        <div className="videos-component">
+          <Videos />
+        </div>
       </div>
     ) : (
       <Redirect to="/login" />

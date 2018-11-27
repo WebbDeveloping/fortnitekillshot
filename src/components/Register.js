@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Grid, Col } from "react-bootstrap";
 
 import { userLoggedIn } from "../redux/reducer";
 
@@ -43,30 +44,34 @@ class Register extends Component {
       <Redirect to="/Profile" />
     ) : (
       <div>
-        <h1>Registration</h1>
-        <input
-          type="text"
-          name="gamertag"
-          placeholder="gamertag"
-          value={this.state.gamertag}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="password"
-          placeholder="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleClick}>submit</button>
-        {this.state.error}
+        <form>
+          {/* <Col xs={12} sm={8} smOffset={2}> */}
+          <h1>Registration</h1>
+          <input
+            type="text"
+            name="gamertag"
+            placeholder="gamertag"
+            value={this.state.gamertag}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            name="password"
+            placeholder="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <button onClick={this.handleClick}>submit</button>
+          {this.state.error}
+          {/* </Col> */}
+        </form>
       </div>
     );
   }

@@ -3,18 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.362.0",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
+    "bluebird": "^3.5.3",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "file-type": "^10.5.0",
+    "fs": "0.0.1-security",
     "massive": "^5.5.3",
+    "multiparty": "^4.2.1",
     "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
+    "react-player": "^1.7.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
+    "react-s3-uploader": "^4.8.0",
     "react-scripts": "2.1.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "video-react": "^0.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,5 +46,11 @@
   "author": "",
   "license": "ISC",
   "main": "server/index.js",
-  "proxy": "http://localhost:7000"
+  "proxy": "http://localhost:7000",
+  "nodemonConfig": {
+    "ext": "js,sql",
+    "ignore": [
+      "src/*"
+    ]
+  }
 }

@@ -2,7 +2,20 @@ const express = require("express");
 const session = require("express-session");
 const massive = require("massive");
 const bodyParser = require("body-parser");
+const AWS = require("aws-sdk");
+const fs = require("fs");
+const fileType = require("file-type");
+const bluebird = require("bluebird");
+const multiparty = require("multiparty");
 require("dotenv").config();
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
+AWS.config.setPromisesDependency(bluebird);
+
+const s3 = new AWS.S3();
 
 const AuthCtrl = require("./controllers/Auth");
 const VideoCtrl = require("./controllers/Video");
@@ -24,6 +37,28 @@ app.use(
     saveUninitialized: false
   })
 );
+// app.use(
+//   "/s3",
+//   require("react-s3-uploader/s3router")({
+//     bucket: "fortnitekillshot",
+
+//     signatureVersion: "v4", //optional (use for some amazon regions: frankfurt and others)
+//     headers: { "Access-Control-Allow-Origin": "*" }, // optional
+//     ACL: "private", // this is default
+//     uniquePrefix: true // (4.0.2 and above) default is true, setting the attribute to false preserves the original filename in S3
+//   })
+// );
+const uploadFile = (buffer, name, type) => {
+  const params = {
+    ACL: "public-read",
+    Body: buffer,
+    // i feel like this needs to be change below?
+    Bucket: process.env.S3_BUCKET,
+    ContentType: type.mime,
+    Key: `${name}.${type.ext}`
+  };
+  return s3.upload(params).promise();
+};
 
 app.post("/auth/login", AuthCtrl.login);
 app.post("/auth/register", AuthCtrl.register);
@@ -32,7 +67,32 @@ app.get("/auth/currentUser", AuthCtrl.getCurrentUser);
 
 //tried to test postman. its not breaking, but undefined. i did  NOT have _url when i tried post man
 //or is it suppose to be the name of my table??? wtf
-app.post("/api/videos", VideoCtrl.create);
+// app.post("/api/videos", VideoCtrl.create);
+
+app.post("/api/videos", (request, response) => {
+  console.log(3434, request.body);
+  const db = request.app.get("db");
+  let user_id = request.session.user.id;
+  const form = new multiparty.Form();
+  form.parse(request, async (error, fields, files) => {
+    if (error) throw new Error(error);
+    try {
+      const path = files.video[0].path;
+      const buffer = fs.readFileSync(path);
+      const type = fileType(buffer);
+      const timestamp = Date.now().toString();
+      const fileName = `fortnitekillshot/${timestamp}-lg`;
+      const data = await uploadFile(buffer, fileName, type);
+      let videos = await db.createVideo({ user_id, video_url: data.Location });
+
+      return response.status(200).send(videos);
+    } catch (error) {
+      console.log(error);
+      return response.status(400).send(error);
+    }
+  });
+});
+
 app.get("/api/videos", VideoCtrl.view);
 app.get("/api/videos/:id", VideoCtrl.getVideo);
 app.delete("/api/videos/:id", VideoCtrl.delete);

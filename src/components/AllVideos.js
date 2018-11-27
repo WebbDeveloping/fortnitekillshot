@@ -6,6 +6,9 @@ import { Switch, Route } from "react-router-dom";
 import { setVideos } from "../redux/reducer";
 import Videos from "./Videos";
 import Video from "./Video";
+import { Link } from "react-router-dom";
+import ReactPlayer from "react-player";
+import "./AllVideos.css";
 // look into both above components make sure everythibng is set up videO & videoS
 
 class AllVideos extends Component {
@@ -18,11 +21,28 @@ class AllVideos extends Component {
   render() {
     return (
       <div>
-        <h1>All Videos - only when logged in right now</h1>
+        <h1>All Videos</h1>
 
         {this.props.videos.map(video => {
-          console.log("allVideos component-video", video);
-          return <div>{video.video_url}</div>;
+          return (
+            <div>
+              <Link to={`/videos/${video.id}`}>
+                {/* <iframe>
+                  <h1>{video.video_url}</h1>
+                </iframe> */}
+                <div className="player-wrapper">
+                  <ReactPlayer
+                    className="react-player"
+                    url={video.video_url}
+                    width="50%"
+                    height="50%"
+                    playing
+                    lopp="true"
+                  />
+                </div>
+              </Link>
+            </div>
+          );
         })}
       </div>
     );
