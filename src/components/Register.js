@@ -47,28 +47,39 @@ class Register extends Component {
         <form>
           {/* <Col xs={12} sm={8} smOffset={2}> */}
           <h1>Registration</h1>
-          <input
-            type="text"
-            name="gamertag"
-            placeholder="gamertag"
-            value={this.state.gamertag}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            name="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-          <input
-            type="text"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <button onClick={this.handleClick}>submit</button>
+          <div class="form-control">
+            <input
+              class="form-control"
+              type="text"
+              name="gamertag"
+              placeholder="gamertag"
+              value={this.state.gamertag}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div class="form-control">
+            <input
+              class="form-control"
+              type="text"
+              name="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div class="form-control">
+            <input
+              class="form-control"
+              type="text"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <button class="btn btn-primary" onClick={this.handleClick}>
+            submit
+          </button>
           {this.state.error}
           {/* </Col> */}
         </form>

@@ -2,10 +2,14 @@
   position: relative;
   padding-top: 56.25%;
   /* playerratio: 100 / (1280 / 720); */
+  background-color: transparent;
+  border: 5px solid purple;
 }
 
 .react-player {
+  background-color: transparent;
   position: absolute;
   top: 0;
   left: 0;
+  border: 5px solid greenyellow;
 }

@@ -47,7 +47,7 @@ module.exports = {
 
       let videos = await db.deleteVideo(id);
       //not id. not [+id]. not video.id..... what the fuck do i put here!!!???!!!
-      console.log(887788, videos);
+      // console.log(887788, videos);
       res.send(videos);
     } catch (error) {
       console.log("error deleting video:", error);
@@ -63,7 +63,7 @@ module.exports = {
       // let video = videoResponse[0];
 
       res.send(videoResponse);
-      console.log("vr", videoResponse);
+      // console.log("vr", videoResponse);
     } catch (error) {
       console.log("error getting video:", error);
       res.status(500).send(error);

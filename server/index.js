@@ -70,14 +70,14 @@ app.get("/auth/currentUser", AuthCtrl.getCurrentUser);
 // app.post("/api/videos", VideoCtrl.create);
 
 app.post("/api/videos", (request, response) => {
-  console.log(3434, request.body);
   const db = request.app.get("db");
   let user_id = request.session.user.id;
   const form = new multiparty.Form();
   form.parse(request, async (error, fields, files) => {
     if (error) throw new Error(error);
     try {
-      const path = files.video[0].path;
+      const path = files.file[0].path;
+
       const buffer = fs.readFileSync(path);
       const type = fileType(buffer);
       const timestamp = Date.now().toString();

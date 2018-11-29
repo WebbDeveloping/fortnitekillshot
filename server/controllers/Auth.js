@@ -36,7 +36,6 @@ module.exports = {
       let userResponse = await db.getUserByEmail(email);
 
       if (userResponse[0]) {
-        console.log("3");
         return res.status(409).send("email already taken");
       }
 
@@ -44,7 +43,7 @@ module.exports = {
       const hash = bcrypt.hashSync(password, salt);
 
       let response = await db.createUser({ gamertag, email, hash });
-      console.log("4");
+
       let newUser = response[0];
 
       delete newUser.password;

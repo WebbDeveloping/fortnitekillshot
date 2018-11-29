@@ -1,6 +1,8 @@
 .player-wrapper {
   position: relative;
   padding-top: 56.25%;
+  border: 2px solid rgb(252, 104, 104);
+  width: 50%;
   /* playerratio: 100 / (1280 / 720); */
 }
 
@@ -8,4 +10,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  border: 2px solid blue;
+}
+
+.video-container {
+  border: 2px solid black;
 }

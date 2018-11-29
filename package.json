@@ -17,6 +17,7 @@
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
+    "react-fileupload-progress": "^0.4.2",
     "react-player": "^1.7.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",

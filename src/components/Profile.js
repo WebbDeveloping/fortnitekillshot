@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 
 import VideoForm from "../components/VideoForm";
+import CustomVideoForm from "../components/CustomVideoForm";
 import Videos from "../components/Videos";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -14,7 +15,7 @@ class Profile extends Component {
     //console.log
     //some how if i remove the ${} below it also gives me a server error finding current user???
     axios.get(`/api/videos/${this.props.user.id}`).then(response => {
-      console.log(9898, this.props.user.id);
+      console.log(9898, this.props);
       this.props.getUserVideo(response.data);
       //console.log
       // console.log(123, this.props.user.id);
@@ -23,15 +24,13 @@ class Profile extends Component {
   }
   render() {
     return this.props.isAuthenticated ? (
-      <div>
+      <div className="profile-page">
         <div class="text-right">
           {/* how do i add margin to this bitch?? */}
-          <h6 className="profile-pic">update profile button?</h6>
-          <h2 className="profile-pic">GamerTag might go here?</h2>
-          <img
-            src="http://via.placeholder.com/300x250"
-            className="profile-pic"
-          />
+
+          <h2 className="gtag">{this.props.user.gamertag}</h2>
+          <img src="assets/galaxyskin.jpg" className="profile-pic" />
+          <hr />
           <div className="social-links">
             <a class="btn btn-primary btn-xs" href="#profile" role="button">
               Facebook
@@ -50,7 +49,8 @@ class Profile extends Component {
         <hr />
 
         <div className="video-form">
-          <VideoForm />
+          {/* <VideoForm /> */}
+          <CustomVideoForm />
         </div>
         <div className="videos-component">
           <Videos />

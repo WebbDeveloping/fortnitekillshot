@@ -25,7 +25,7 @@ class AllVideos extends Component {
 
         {this.props.videos.map(video => {
           return (
-            <div>
+            <div className="video-container">
               <Link to={`/videos/${video.id}`}>
                 {/* <iframe>
                   <h1>{video.video_url}</h1>
@@ -37,7 +37,7 @@ class AllVideos extends Component {
                     width="50%"
                     height="50%"
                     playing
-                    lopp="true"
+                    loop="true"
                   />
                 </div>
               </Link>

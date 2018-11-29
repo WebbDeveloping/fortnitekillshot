@@ -30,6 +30,7 @@ class Videos extends Component {
   // }
   render() {
     //console.log
+    console.log(12344321, this.props.userVideo);
     console.log("render in the videos.js", this.props.userVideo);
 
     return (
@@ -37,7 +38,7 @@ class Videos extends Component {
         {this.props.isAuthenticated}
         {/* ZACH - You are currently mapping through userVideo coming from mapStateToProps. This is getting populated on the component did mount of the Profile component. */}
         <h6>return in the videos component</h6>
-        {/* what is this video in the arrow function below?? its the whole table from the user_video_link */}
+
         {this.props.userVideo.map(video => {
           return (
             <div key={video.user_id.video_url}>

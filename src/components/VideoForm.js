@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { setVideos } from "../redux/reducer";
 import { getUserVideo } from "../redux/reducer";
+import FileUploadProgress from "react-fileupload-progress";
 
 class VideoForm extends Component {
   constructor() {
@@ -42,6 +43,7 @@ class VideoForm extends Component {
   };
 
   uploadFile = e => {
+    console.log(e);
     e.preventDefault();
     const fd = new FormData();
 
@@ -50,6 +52,13 @@ class VideoForm extends Component {
       .post("/api/videos", fd, {
         headers: {
           "Content-Type": "multipart/form-data"
+        },
+        onUploadProgress: progressEvent => {
+          console.log(
+            "Upload Progress: " +
+              Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+              "%"
+          );
         }
       })
       .then(response => {
@@ -62,7 +71,7 @@ class VideoForm extends Component {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-4">
-            <h1>Submit cool video here.</h1>
+            <h4>Submit cool video here.</h4>
 
             {/* <form>
               <textarea
@@ -81,11 +90,31 @@ class VideoForm extends Component {
 
             <form onSubmit={this.uploadFile}>
               <input
-                class="form-control"
+                class="d-flex p-2 bd-highlight"
                 type="file"
                 onChange={this.fileSelectedHandler}
               />
               <button type="submit">upload</button>
+
+              {/* <FileUploadProgress
+              key="ex2"
+              url="http://localhost:3000/api/upload"
+              onProgress={(e, request, progress) => {
+                console.log("progress", e, request, progress);
+              }}
+              onLoad={(e, request) => {
+                console.log("load", e, request);
+              }}
+              onError={(e, request) => {
+                console.log("error", e, request);
+              }}
+              onAbort={(e, request) => {
+                console.log("abort", e, request);
+              }}
+              formGetter={this.formGetter.bind(this)}
+              formRenderer={this.customFormRenderer.bind(this)}
+              progressRenderer={this.customProgressRenderer.bind(this)}
+            /> */}
             </form>
           </div>
         </div>
