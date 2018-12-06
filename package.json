@@ -47,7 +47,7 @@
   "author": "",
   "license": "ISC",
   "main": "server/index.js",
-  "proxy": "http://localhost:7000",
+  "proxy": "http://localhost:7001",
   "nodemonConfig": {
     "ext": "js,sql",
     "ignore": [

@@ -7,6 +7,7 @@ const fs = require("fs");
 const fileType = require("file-type");
 const bluebird = require("bluebird");
 const multiparty = require("multiparty");
+// const path = require("path");
 require("dotenv").config();
 
 AWS.config.update({
@@ -30,6 +31,9 @@ massive(CONNECTION_STRING).then(db => {
 });
 
 app.use(bodyParser.json());
+
+app.use(express.static(`${__dirname}/../build`));
+
 app.use(
   session({
     secret: SESSION_SECRET,
