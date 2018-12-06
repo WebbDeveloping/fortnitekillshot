@@ -4,6 +4,7 @@ import { userLoggedOut } from "../redux/reducer";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from "react-bootstrap";
+import "./Header.css";
 
 class Header extends Component {
   logout = () => {
@@ -15,19 +16,22 @@ class Header extends Component {
   render() {
     return (
       <div
-      // style={{
-      //   display: "flex",
-      //   justifyContent: "space-between",
-      //   alignItems: "center",
-      //   borderBottom: "1px solid black",
-      //   height: "90px",
-      //   padding: "40px"
-      // }}
+        className="nav-bar"
+        // style={{
+        //   display: "flex",
+        //   justifyContent: "space-between",
+        //   alignItems: "center",
+        //   borderBottom: "1px solid black",
+        //   height: "90px",
+        //   padding: "40px"
+        // }}
       >
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#Profile">KillShot</a>
+              <a href="#Profile">
+                <img src="../assets/fortnitelogo.png" />
+              </a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -36,8 +40,11 @@ class Header extends Component {
               <NavItem eventKey={1} href="#AllVideos">
                 AllVideos
               </NavItem>
-              <NavItem eventKey={2} href="#">
-                Link
+              <NavItem
+                eventKey={2}
+                href="https://www.epicgames.com/fortnite/en-US/battle-pass/season-6"
+              >
+                EpicGames
               </NavItem>
               <NavDropdown
                 eventKey={3}

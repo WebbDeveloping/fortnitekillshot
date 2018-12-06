@@ -15,45 +15,68 @@ class Profile extends Component {
     //console.log
     //some how if i remove the ${} below it also gives me a server error finding current user???
     axios.get(`/api/videos/${this.props.user.id}`).then(response => {
-      console.log(9898, this.props);
+      // console.log(9898, this.props);
       this.props.getUserVideo(response.data);
       //console.log
       // console.log(123, this.props.user.id);
-      console.log(666, response.data);
+      // console.log(666, response.data);
     });
   }
   render() {
     return this.props.isAuthenticated ? (
       <div className="profile-page">
-        <div class="text-right">
+        <div className="gt-and-pic">
           {/* how do i add margin to this bitch?? */}
-
-          <h2 className="gtag">{this.props.user.gamertag}</h2>
-          <img src="assets/galaxyskin.jpg" className="profile-pic" />
-          <hr />
+          <div className="gtag">
+            <h2>"Welcome {this.props.user.gamertag}"</h2>
+          </div>
           <div className="social-links">
-            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+            <a
+              className="facebook"
+              class="btn btn-primary btn-xs"
+              href="https://www.facebook.com/"
+              role="button"
+            >
               Facebook
             </a>
-            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+
+            <a
+              className="instagram"
+              class="btn btn-primary btn-xs"
+              href="https://www.instagram.com"
+              role="button"
+            >
               Instagram
             </a>
-            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+
+            <a
+              className="twitch"
+              class="btn btn-primary btn-xs"
+              href="https://www.twitch.tv/"
+              role="button"
+            >
               Twitch
             </a>
-            <a class="btn btn-primary btn-xs" href="#profile" role="button">
+            <a
+              className="twitter"
+              class="btn btn-primary btn-xs"
+              href="https://twitter.com/login?lang=en"
+              role="button"
+            >
               Twitter
             </a>
           </div>
+          <img src="assets/galaxyskin.jpg" className="profile-pic" />
         </div>
-        <hr />
 
-        <div className="video-form">
-          {/* <VideoForm /> */}
-          <CustomVideoForm />
-        </div>
-        <div className="videos-component">
-          <Videos />
+        <div className="components">
+          <div className="video-form">
+            <CustomVideoForm />
+          </div>
+          <div className="videos-component">
+            <hr />
+            <Videos />
+          </div>
         </div>
       </div>
     ) : (

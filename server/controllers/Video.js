@@ -44,10 +44,11 @@ module.exports = {
     try {
       const db = req.app.get("db");
       let { id } = req.params;
+      let user_id = req.session.user.id;
 
-      let videos = await db.deleteVideo(id);
-      //not id. not [+id]. not video.id..... what the fuck do i put here!!!???!!!
-      // console.log(887788, videos);
+      console.log(45454545, user_id, req.session.user);
+      let videos = await db.deleteVideo([+id, user_id]);
+      console.log(45678, videos);
       res.send(videos);
     } catch (error) {
       console.log("error deleting video:", error);
@@ -58,12 +59,26 @@ module.exports = {
     try {
       const db = req.app.get("db");
       let { id } = req.params;
-      // what is the diference between id and [+id]???
+
       let videoResponse = await db.getVideo([+id]);
       // let video = videoResponse[0];
 
       res.send(videoResponse);
-      // console.log("vr", videoResponse);
+    } catch (error) {
+      console.log("error getting video:", error);
+      res.status(500).send(error);
+    }
+  },
+
+  getVideoInfo: async (req, res) => {
+    try {
+      const db = req.app.get("db");
+      let { id } = req.params;
+
+      let videoResponse = await db.getVideoInfo([+id]);
+      let video = videoResponse[0];
+
+      res.send(video);
     } catch (error) {
       console.log("error getting video:", error);
       res.status(500).send(error);

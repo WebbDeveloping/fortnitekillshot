@@ -1,0 +1,21 @@
+/* .display-video {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  border: 3px solid red;
+  height: auto;
+  width: auto;
+} */
+/* .react-player {
+  padding: 10px 10px 10px 10px;
+  margin: 150px 0px 10px 0px;
+  border: 10px solid black;
+  background-color: gray;
+} */
+.react-player video {
+  padding: 10px 10px 10px 10px;
+  display: static;
+  margin: 25% 50% 25% 50%;
+  border: 2px solid black;
+  background-color: gray;
+}

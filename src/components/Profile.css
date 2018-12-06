@@ -1,40 +1,83 @@
 .profile-page {
   background-image: url("/assets/bgi.jpg");
-  background-color: #cccccc;
-  border: 5px solid green;
+  /* background-color: #cccccc; */
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 0%;
+  position: inherit;
+  overflow: hidden;
 }
-.profile-pic {
-  margin-right: 5em;
-  width: 300px;
-  height: auto;
-  border-style: solid;
-  border-width: 10px;
-  border-color: gold;
-}
+
 .gtag {
+  background-color: purple;
+  justify-content: center;
+
   flex: 1px;
-  width: 500px;
-  height: 5px;
-  border: 2px solid orange;
+
+  padding-right: 50px;
+  padding-left: 50px;
+  margin: 0% 10% 5% 10%;
+  border: 3px solid goldenrod;
 }
-.social-links {
-  margin-top: 2em;
-  margin-right: 5em;
+
+.gtag h2 {
+  color: goldenrod;
+  text-align: center;
+  margin: 1% 10% 1% 10%;
+}
+/* .social-links {
+  position: static;
+
+  text-align: center;
+
+  box-sizing: border-box;
+} */
+.social-links a {
+  float: right;
+  justify-content: space-between;
+  padding-right: 10%;
+  border: 1px solid goldenrod;
+  margin-right: 2%;
+}
+
+/* .components {
+  display: inline;
+} */
+.gt-and-pic img {
+  float: right;
+  margin-right: 2%;
+  margin-top: 1%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: goldenrod;
+  width: auto;
+  height: 25%;
 }
 .video-form {
-  float: right;
-  margin: 0 1em 1em 0;
-  height: 50%;
-  background-color: transparent;
-  border: 5px solid pink;
+  position: static;
+  margin-top: 3%;
+  float: left;
+  margin-left: 2%;
+  background-color: white;
+  border: 5px solid goldenrod;
 }
 
 .videos-component {
   background-color: transparent;
-  float: left;
-  width: 500px;
-  height: 5px;
-  margin-left: 10em;
-  margin-bottom: 10em;
-  border: 2px solid blue;
+  display: inline-block;
+  margin: 5% 35px 25% 20%;
 }
+/* .videos-component div {
+  display: flex;
+} */
+/* .videos-component button {
+  background-color: white;
+  color: red;
+  margin: 150px 0px 150px 0px;
+  border: 1px solid red;
+  text-align: center;
+} */

@@ -20,37 +20,41 @@ class AllVideos extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>All Videos</h1>
-
-        {this.props.videos.map(video => {
-          return (
-            <div className="video-container">
-              <Link to={`/videos/${video.id}`}>
-                {/* <iframe>
-                  <h1>{video.video_url}</h1>
-                </iframe> */}
-                <div className="player-wrapper">
-                  <ReactPlayer
-                    className="react-player"
-                    url={video.video_url}
-                    width="50%"
-                    height="50%"
-                    playing
-                    loop="true"
-                  />
-                </div>
-              </Link>
-            </div>
-          );
-        })}
+      <div className="all-videos-page">
+        {/* <h1>All Videos</h1> */}
+        <div
+          style={{
+            display: "grid",
+            width: "auto",
+            gridTemplateColumns: "repeat(3, 1fr)"
+          }}
+        >
+          {this.props.videos.map(video => {
+            return (
+              <div className="video-container">
+                <Link to={`/video/${video.id}`}>
+                  <div className="player-wrapper">
+                    <ReactPlayer
+                      className="react-player"
+                      url={video.video_url}
+                      width="50%"
+                      height="50%"
+                      playing
+                      loop={true}
+                    />
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log("allVideos-state", state);
+  // console.log("allVideos-state", state);
   let { videos } = state;
 
   return { videos };

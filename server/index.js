@@ -52,7 +52,7 @@ const uploadFile = (buffer, name, type) => {
   const params = {
     ACL: "public-read",
     Body: buffer,
-    // i feel like this needs to be change below?
+
     Bucket: process.env.S3_BUCKET,
     ContentType: type.mime,
     Key: `${name}.${type.ext}`
@@ -64,10 +64,6 @@ app.post("/auth/login", AuthCtrl.login);
 app.post("/auth/register", AuthCtrl.register);
 app.get("/auth/logout", AuthCtrl.logout);
 app.get("/auth/currentUser", AuthCtrl.getCurrentUser);
-
-//tried to test postman. its not breaking, but undefined. i did  NOT have _url when i tried post man
-//or is it suppose to be the name of my table??? wtf
-// app.post("/api/videos", VideoCtrl.create);
 
 app.post("/api/videos", (request, response) => {
   const db = request.app.get("db");
@@ -93,8 +89,10 @@ app.post("/api/videos", (request, response) => {
   });
 });
 
+// app.get('https://fortnite-public-api.theapinetwork.com/prod09/store/get', )
 app.get("/api/videos", VideoCtrl.view);
 app.get("/api/videos/:id", VideoCtrl.getVideo);
+app.get("/api/videos/info/:id", VideoCtrl.getVideoInfo);
 app.delete("/api/videos/:id", VideoCtrl.delete);
 // app.put("/api/video_url/:id", VideoCtrl.update);
 

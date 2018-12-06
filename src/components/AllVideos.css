@@ -1,18 +1,16 @@
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25%;
-  border: 2px solid rgb(252, 104, 104);
-  width: 50%;
-  /* playerratio: 100 / (1280 / 720); */
+.all-videos-page {
+  display: flex;
+  /* flex-shrink: 8; */
+  /* justify-content: center; */
+  /* padding-left: 50px; */
 }
-
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 2px solid blue;
-}
-
 .video-container {
+  display: center;
+}
+.react-player video {
+  /* padding: 10px 10px 10px 10px; */
+  display: static;
+  /* margin: 25% 50% 25% 50%; */
   border: 2px solid black;
+  background-color: gray;
 }

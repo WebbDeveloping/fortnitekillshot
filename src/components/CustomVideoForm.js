@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { setVideos } from "../redux/reducer";
 import { getUserVideo } from "../redux/reducer";
+import "./CustomVideoForm.css";
 //allow react dev tools work
 window.React = React;
 
@@ -53,7 +54,7 @@ const styles = {
   },
 
   bslabel: {
-    display: "inline-block",
+    display: "block",
     maxWidth: "100%",
     marginBottom: "5px",
     fontWeight: 700
@@ -108,20 +109,20 @@ class CustomVideoForm extends Component {
     return (
       <form
         id="customForm"
-        style={{ marginBottom: "15px" }}
+        // style={{ marginBottom: "15px" }}
         onSubmit={this.uploadFile}
       >
         <label style={styles.bslabel} htmlFor="exampleInputFile">
-          File input
+          SUBMIT KILLSHOT VIDEO
         </label>
         <input
-          style={{ display: "block" }}
+          // style={{ display: "inline-block" }}
           type="file"
           name="file"
           id="exampleInputFile"
           onChange={this.fileSelectedHandler}
         />
-        <p style={styles.bsHelp}>This is custom form.</p>
+        {/* <p style={styles.bsHelp}>This is custom form.</p> */}
 
         <button type="button" style={styles.bsButton} onClick={onSubmit}>
           Upload
@@ -143,7 +144,7 @@ class CustomVideoForm extends Component {
         );
       }
       if (progress === 100) {
-        message = <span>Done</span>;
+        message = <span>This may take a moment</span>;
       }
 
       return (
@@ -178,17 +179,14 @@ class CustomVideoForm extends Component {
           "Content-Type": "multipart/form-data"
         }
       })
-      .then(response => {
-        console.log(5555555555555555, response);
-      });
+      .then(response => {});
   };
 
   render() {
     return (
       <div>
-        <hr style={{ marginTop: "80px" }} />
+        {/* <hr style={{ marginTop: "80px" }} /> */}
 
-        <h3>Custome rederer</h3>
         {/* this was coppied straight over from videoform  */}
         {/* <form onSubmit={this.uploadFile}>
           <input

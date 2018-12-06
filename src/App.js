@@ -9,6 +9,7 @@ import { Button } from "react-bootstrap";
 
 import { Route, Switch } from "react-router-dom";
 import AllVideos from "./components/AllVideos";
+import Video from "./components/Video";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/Profile" component={Profile} />
+            <Route path="/video/:id" component={Video} />
 
             <Route path="/AllVideos" component={AllVideos} />
             {/* possibly fix this route to the all videos??? */}
