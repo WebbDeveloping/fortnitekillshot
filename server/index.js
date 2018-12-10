@@ -20,6 +20,7 @@ const s3 = new AWS.S3();
 
 const AuthCtrl = require("./controllers/Auth");
 const VideoCtrl = require("./controllers/Video");
+const UserCtrl = require("./controllers/User");
 
 const app = express();
 
@@ -44,11 +45,11 @@ app.use(
 // app.use(
 //   "/s3",
 //   require("react-s3-uploader/s3router")({
-//     bucket: "fortnitekillshot",
+//     bucket: process.env.S3_BUCKET,
 
 //     signatureVersion: "v4", //optional (use for some amazon regions: frankfurt and others)
 //     headers: { "Access-Control-Allow-Origin": "*" }, // optional
-//     ACL: "private", // this is default
+//     ACL: "prublic-read", // this is default
 //     uniquePrefix: true // (4.0.2 and above) default is true, setting the attribute to false preserves the original filename in S3
 //   })
 // );
@@ -68,6 +69,37 @@ app.post("/auth/login", AuthCtrl.login);
 app.post("/auth/register", AuthCtrl.register);
 app.get("/auth/logout", AuthCtrl.logout);
 app.get("/auth/currentUser", AuthCtrl.getCurrentUser);
+
+// User
+app.put("/api/updategamertag", UserCtrl.updateGamertag);
+app.post("/api/updateimage", UserCtrl.updateUserImage);
+
+// app.post("/api/updateimage", (request, response) => {
+//   console.log(55774466, request.session.user);
+
+//   const db = request.app.get("db");
+//   let user_id = request.session.user.id;
+//   // console.log(876789876, user_id);
+//   const form = new multiparty.Form();
+//   form.parse(request, async (error, fields, files) => {
+//     if (error) throw new Error(error);
+//     try {
+//       const path = files.file[0].path;
+
+//       const buffer = fs.readFileSync(path);
+//       const type = fileType(buffer);
+//       const timestamp = Date.now().toString();
+//       const fileName = `fortnitekillshot/${timestamp}-lg`;
+//       const data = await uploadFile(buffer, fileName, type);
+//       let videos = await db.createVideo({ user_id, video_url: data.Location });
+
+//       return response.status(200).send(videos);
+//     } catch (error) {
+//       console.log(error);
+//       return response.status(400).send(error);
+//     }
+//   });
+// });
 
 app.post("/api/videos", (request, response) => {
   const db = request.app.get("db");

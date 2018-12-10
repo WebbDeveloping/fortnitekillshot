@@ -25,11 +25,11 @@ class Profile extends Component {
   render() {
     return this.props.isAuthenticated ? (
       <div className="profile-page">
-        <div className="gt-and-pic">
-          {/* how do i add margin to this bitch?? */}
+        <div className="top-part">
           <div className="gtag">
             <h2>"Welcome {this.props.user.gamertag}"</h2>
           </div>
+
           <div className="social-links">
             <a
               className="facebook"
@@ -66,17 +66,23 @@ class Profile extends Component {
               Twitter
             </a>
           </div>
-          <img src="assets/galaxyskin.jpg" className="profile-pic" />
-        </div>
+          <div className="image">
+            <a href="#User">
+              <img src="assets/galaxyskin.jpg" className="profile-pic" />
+            </a>
+          </div>
 
-        <div className="components">
           <div className="video-form">
             <CustomVideoForm />
+            {/* <VideoForm /> */}
           </div>
-          <div className="videos-component">
-            <hr />
-            <Videos />
-          </div>
+          {/* <a href="#ViewUser">
+            <h1>words here testing</h1>
+          </a> */}
+        </div>
+        <div className="videos-component">
+          <hr />
+          <Videos />
         </div>
       </div>
     ) : (

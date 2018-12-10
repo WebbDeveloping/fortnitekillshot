@@ -40,6 +40,9 @@ class Videos extends Component {
                       // height="75%"
                       playing={true}
                       loop={true}
+                      volume={0}
+                      muted={true}
+                      controls={true}
                     />
                   </div>
                 </Link>

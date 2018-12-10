@@ -15,6 +15,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Header from "./components/Header";
 import Profile from "./components/Profile";
+import UserProfile from "./components/UserProfile";
+import ViewUserProfile from "./components/ViewUserProfile";
 
 class App extends Component {
   constructor() {
@@ -42,15 +44,17 @@ class App extends Component {
       <HashRouter>
         <div>
           <Header />
-          {/* <Navbar /> */}
+
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route exact path="/" component={Register} />
             <Route path="/Profile" component={Profile} />
             <Route path="/video/:id" component={Video} />
+            <Route path="/user" component={UserProfile} />
+            <Route path="/ViewUser" component={ViewUserProfile} />
 
             <Route path="/AllVideos" component={AllVideos} />
-            {/* possibly fix this route to the all videos??? */}
           </Switch>
         </div>
       </HashRouter>

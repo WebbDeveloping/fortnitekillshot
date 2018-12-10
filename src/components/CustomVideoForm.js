@@ -11,8 +11,9 @@ window.React = React;
 
 const styles = {
   progressWrapper: {
+    margin: "5px 5px 5px 5px",
     height: "50px",
-    marginTop: "10px",
+    // marginTop: "10px",
     width: "400px",
     float: "left",
     overflow: "hidden",
@@ -34,7 +35,8 @@ const styles = {
     boxShadow: "inset 0 -1px 0 rgba(0,0,0,.15)",
     WebkitTransition: "width .6s ease",
     Otransition: "width .6s ease",
-    transition: "width .6s ease"
+    transition: "width .6s ease",
+    boxShadow: "2px 2px 3px black"
   },
   cancelButton: {
     marginTop: "5px",
@@ -56,8 +58,10 @@ const styles = {
   bslabel: {
     display: "block",
     maxWidth: "100%",
-    marginBottom: "5px",
+    margin: "5px 5px 5px 5px",
     fontWeight: 700
+    // ,
+    // boxShadow: "2px 2px 3px black"
   },
 
   bsHelp: {
@@ -68,7 +72,7 @@ const styles = {
   },
 
   bsButton: {
-    padding: "1px 5px",
+    padding: "2px 5px 5px 5px",
     fontSize: "12px",
     lineHeight: "1.5",
     borderRadius: "3px",
@@ -77,7 +81,7 @@ const styles = {
     borderColor: "#2e6da4",
     display: "inline-block",
     padding: "6px 12px",
-    marginBottom: 0,
+    margin: "5px 5px 5px 5px",
     fontWeight: 400,
     textAlign: "center",
     whiteSpace: "nowrap",
@@ -89,7 +93,8 @@ const styles = {
     msUserSelect: "none",
     userSelect: "none",
     backgroundImage: "none",
-    border: "1px solid transparent"
+    border: "1px solid transparent",
+    boxShadow: "2px 2px 3px black"
   }
 };
 

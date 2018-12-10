@@ -1,0 +1,92 @@
+.view-user-profile-page {
+  background-image: url("/assets/ViewUser.jpg");
+
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 0%;
+  position: inherit;
+  overflow: hidden;
+}
+
+.view-user-gtag {
+  background-color: blueviolet;
+  border: 3px solid gold;
+  border-radius: 5px;
+  position: static;
+  margin: 2% 2% 0% 42%;
+  float: left;
+  padding: 1% 5% 1% 5%;
+
+  box-shadow: 4px 4px 6px black;
+}
+.view-user-image img {
+  /* float: right; */
+  margin: 1% 2% 2% 35%;
+  /* padding: 2% 2% 2% 2%; */
+  border-style: solid;
+  border-width: 2px;
+  border: 2px solid gold;
+  /* width: auto; */
+  height: 25%;
+  box-shadow: 4px 4px 6px black;
+  border-radius: 5px;
+}
+
+.view-user-gtag h2 {
+  color: gold;
+  text-align: center;
+  margin: 1% 10% 1% 10%;
+  border-radius: 5px;
+}
+.view-user-social-links {
+  position: static;
+  text-align: center;
+  box-sizing: border-box;
+  /* border: 4px solid red; */
+  margin: 0% 2% 1% 2%;
+  /* padding: 0% 2% 0% 2%; */
+  color: gold;
+  font-weight: bold;
+  text-align: center;
+}
+
+.view-user-social-links a {
+  /* float: right; */
+
+  justify-content: space-between;
+  margin: 2% 2% 2% 2%;
+  padding: 1% 5% 1% 5%;
+
+  border: 1px solid gold;
+
+  box-shadow: 2px 2px 3px black;
+  color: gold;
+  font-weight: bold;
+}
+
+.components {
+  display: inline;
+}
+
+.videos-component {
+  background-color: transparent;
+  display: inline-block;
+  margin: 5% 35px 100% 20%;
+  /* box-shadow: 2px 2px 3px black; */
+}
+.videos-component button {
+  padding: 1% 2% 1% 2%;
+  margin-left: 45%;
+  margin-right: 45%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px black;
+}
+.react-player video {
+  border: 1px solid black;
+  background: black;
+  box-shadow: 4px 4px 6px black;
+}

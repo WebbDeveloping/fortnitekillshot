@@ -9,4 +9,13 @@
   position: inline-block;
   justify-content: center;
   color: red;
+  margin: 4px 2% 2% 2%;
+  font-weight: bold;
+  border: 1px solid black;
+  /* padding: 2% 2% 2% 2%; */
+}
+
+.player-wrapper {
+  box-shadow: 2px 2px 3px black;
+  margin: 2% 2% 2% 2%;
 }

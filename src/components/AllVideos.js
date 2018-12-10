@@ -8,6 +8,7 @@ import Videos from "./Videos";
 import Video from "./Video";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
+import Stars from "../components/Stars";
 import "./AllVideos.css";
 // look into both above components make sure everythibng is set up videO & videoS
 
@@ -23,27 +24,40 @@ class AllVideos extends Component {
       <div className="all-videos-page">
         {/* <h1>All Videos</h1> */}
         <div
+          className="all-video-grid"
           style={{
             display: "grid",
             width: "auto",
-            gridTemplateColumns: "repeat(3, 1fr)"
+            gridTemplateColumns: "repeat(2, 1fr)"
           }}
         >
           {this.props.videos.map(video => {
+            console.log(78787878, this.props.videos);
             return (
-              <div className="video-container">
+              <div className="all-video-video-container">
                 <Link to={`/video/${video.id}`}>
-                  <div className="player-wrapper">
+                  <h1 className="all-video-author">
+                    <Link to={`/ViewUser/:${video.user_id}`}>
+                      "Uploaded by {video.author}"
+                    </Link>
+                  </h1>
+                  <div className="all-video-player-wrapper">
                     <ReactPlayer
-                      className="react-player"
+                      className="all-video-react-player"
                       url={video.video_url}
-                      width="50%"
-                      height="50%"
+                      // width="50%"
+                      // height="50%"
                       playing
                       loop={true}
+                      volume={0}
+                      muted={true}
+                      controls={true}
                     />
                   </div>
                 </Link>
+                <div className="star-rating">
+                  <Stars />
+                </div>
               </div>
             );
           })}

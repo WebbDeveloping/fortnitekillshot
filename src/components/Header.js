@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { userLoggedOut } from "../redux/reducer";
+// import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from "react-bootstrap";
@@ -11,6 +12,22 @@ class Header extends Component {
     axios.get("/auth/logout").then(response => {
       this.props.userLoggedOut();
     });
+  };
+  anotherFunction = e => {
+    this.handleAudio();
+    this.logout();
+    // this.redirect();
+  };
+  // redirect = e => {
+
+  //     <Redirect to="/login" />;
+
+  // };
+
+  handleAudio = e => {
+    console.log("audio working almost?");
+    var audio = new Audio("assets/logout.wav");
+    audio.play();
   };
 
   render() {
@@ -40,22 +57,21 @@ class Header extends Component {
               <NavItem eventKey={1} href="#AllVideos">
                 AllVideos
               </NavItem>
+              <NavItem eventKey={1} href="#AllVideos">
+                Top-Videos
+              </NavItem>
               <NavItem
                 eventKey={2}
                 href="https://www.epicgames.com/fortnite/en-US/battle-pass/season-6"
               >
                 EpicGames
               </NavItem>
-              <NavDropdown
-                eventKey={3}
-                title="Dropdown"
-                id="basic-nav-dropdown"
-              >
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+              <NavDropdown eventKey={3} title="About" id="basic-nav-dropdown">
+                <MenuItem eventKey={3.1}>Help</MenuItem>
+                <MenuItem eventKey={3.2}>FAQ</MenuItem>
+                <MenuItem eventKey={3.3}>About FortniteClipShot</MenuItem>
                 <MenuItem divider />
-                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                <MenuItem eventKey={3.3}>Contact Creator</MenuItem>
               </NavDropdown>
             </Nav>
             <Nav pullRight>
@@ -63,7 +79,7 @@ class Header extends Component {
                 Register
               </NavItem>
               {this.props.isAuthenticated ? (
-                <NavItem onClick={this.logout}>Logout</NavItem>
+                <NavItem onClick={this.anotherFunction}>Logout</NavItem>
               ) : (
                 <NavItem>
                   <Link to="/login">login</Link>

@@ -1,3 +1,152 @@
 .register-page {
-  background-image: url("/assets/bgi.jpg"); /* The image used */
+  display: flex;
+  margin: 40px auto;
+  width: 400px;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 12px;
+  margin-top: 80px;
+  background: blueviolet;
+  box-shadow: 2px 2px 3px black;
+}
+.form-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 1% 1% 1% 1%;
+  margin: 2% 2% 2% 2%;
+  color: blueviolet;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px black;
+}
+
+.input-div {
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+.input-header {
+  margin: 0;
+}
+
+.form-control {
+  margin-bottom: 18px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 3px black;
+}
+
+.register-form h1 {
+  text-align: center;
+}
+
+.input-form {
+  background-color: rgb(209, 207, 211);
+  box-sizing: border-box;
+  height: 35px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 18px;
+  /* border-radius: 3px; */
+  outline: none;
+  /* box-shadow: 1px 2px 3px #e6ebf1; */
+  /* -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease; */
+}
+.register-input:focus {
+  box-shadow: 1px 2px 3px #cfd7df;
+}
+
+.register-btn {
+  padding: 6px 38px;
+  color: gold;
+  background: #1d1f20;
+  border: 1px solid gold;
+  border-radius: 3px;
+  font-size: 16px;
+  box-shadow: 2px 2px 3px black;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: 80px;
+  /* padding: 30px 25px 25px 25px; */
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #000;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.register-btn:hover {
+  background-color: blueviolet;
+  color: white;
+  border: 1px solid blueviolet;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.error-message-div {
+  width: 400px;
+  background-color: #ffdce0;
+  color: #86181d;
+  margin: 0 auto 10px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.error-button {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.saving {
+  /* text-align: center; */
+  width: 15%;
+  padding: 0;
+}
+.saving span {
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  font-size: 40px;
+}
+
+.saving span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.saving span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+a {
+  color: gold;
+}
+p {
+  color: gold;
 }

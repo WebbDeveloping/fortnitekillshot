@@ -16,6 +16,16 @@ class Login extends Component {
       error: ""
     };
   }
+  anotherFunction = e => {
+    this.handleAudio();
+    this.handleClick();
+  };
+
+  handleAudio = e => {
+    console.log("audio working almost?");
+    var audio = new Audio("assets/sd-sfx.wav");
+    audio.play();
+  };
 
   handleChange = e => {
     let { name, value } = e.target;
@@ -45,27 +55,37 @@ class Login extends Component {
       <Redirect to="/Profile" />
     ) : (
       <div className="login-page">
-        <Grid>
-          {/* <Col xs={12} sm={8} smOffset={2} className="login-table"> */}
-          <h1>Login</h1>
+        {/* <Grid> */}
+        {/* <Col xs={12} sm={8} smOffset={2} className="login-table"> */}
+        <h2 className="form-header">Login</h2>
+        <div className="form-control">
+          <h3 className="input-header">Email</h3>
           <input
+            className="input-form"
             type="text"
             name="email"
             placeholder="email"
             value={this.state.email}
             onChange={this.handleChange}
           />
+        </div>
+        <div className="form-control">
+          <h3 className="input-header">Password</h3>
           <input
+            className="input-form"
             type="text"
             name="password"
             placeholder="password"
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button onClick={this.handleClick}>Submit</button>
-          {this.state.error}
-          {/* </Col> */}
-        </Grid>
+        </div>
+        <button onClick={this.anotherFunction} className="register-btn">
+          Submit
+        </button>
+        {this.state.error}
+        {/* </Col> */}
+        {/* </Grid> */}
       </div>
     );
   }

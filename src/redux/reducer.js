@@ -2,6 +2,7 @@ const USER_LOGGED_IN = "USER_LOGGED_IN";
 const USER_LOGGED_OUT = "USER_LOGGED_OUT";
 const SET_VIDEOS = "SET_VIDEOS";
 const GET_USER_VIDEO = "GET_USER_VIDEO";
+const UPDATE_GAMERTAG = "UPDATE_GAMERTAG";
 
 const initialState = {
   isAuthenticated: false,
@@ -22,6 +23,10 @@ export default function reducer(state = initialState, action) {
 
     case GET_USER_VIDEO:
       return { ...state, userVideo: action.payload };
+
+    case UPDATE_GAMERTAG:
+      return { ...state, user: { ...state.user, gamertag: action.payload } };
+
     default:
       return state;
   }
@@ -51,5 +56,12 @@ export function getUserVideo(userVideo) {
   return {
     type: GET_USER_VIDEO,
     payload: userVideo
+  };
+}
+
+export function updateGamertag(gamertag) {
+  return {
+    type: UPDATE_GAMERTAG,
+    payload: gamertag
   };
 }

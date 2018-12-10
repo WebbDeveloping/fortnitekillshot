@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { Grid, Col } from "react-bootstrap";
+import { Redirect, Link } from "react-router-dom";
+// import { Grid, Col } from "react-bootstrap";
+import "./Register.css";
 
 import { userLoggedIn } from "../redux/reducer";
 
@@ -13,9 +14,21 @@ class Register extends Component {
       gamertag: "",
       email: "",
       password: "",
-      error: ""
+      confirmPassword: "",
+      error: "",
+      loading: false
     };
   }
+
+  handleAudio = e => {
+    console.log("audio working almost?");
+    var audio = new Audio("assets/sd-sfx.wav");
+    audio.play();
+  };
+  anotherFunction = e => {
+    this.handleAudio();
+    this.handleClick();
+  };
 
   handleChange = e => {
     let { name, value } = e.target;
@@ -25,8 +38,23 @@ class Register extends Component {
     });
   };
 
+  handleKeyPress = event => {
+    if (event.key === "Enter") {
+      this.handleClick();
+    }
+  };
+
+  handleErrorClick = () => {
+    this.setState({
+      error: ""
+    });
+  };
+
   handleClick = e => {
-    e.preventDefault();
+    this.setState({
+      loading: true
+    });
+    // e.preventDefault();
     axios
       .post("/auth/register", this.state)
       .then(response => {
@@ -44,46 +72,97 @@ class Register extends Component {
     return this.props.isAuthenticated ? (
       <Redirect to="/Profile" />
     ) : (
-      <div className="register-page">
-        <form>
-          <Col xs={12} sm={8} smOffset={2}>
-            <h1>Registration</h1>
-            <div class="form-control">
-              <input
-                class="form-control"
-                type="text"
-                name="gamertag"
-                placeholder="gamertag"
-                value={this.state.gamertag}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div class="form-control">
-              <input
-                class="form-control"
-                type="text"
-                name="email"
-                placeholder="email"
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div class="form-control">
-              <input
-                class="form-control"
-                type="text"
-                name="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <button class="btn btn-primary" onClick={this.handleClick}>
+      <div className="content">
+        {this.state.errorMessage ? (
+          <div className="error-message-div error-message">
+            <p>{this.state.errorMessage}</p>
+            <button onClick={this.handleErrorClick} className="error-button">
+              X
+            </button>
+          </div>
+        ) : (
+          <div />
+        )}
+        <div className="register-page">
+          {/* <form className="register-form"> */}
+          <h2 className="form-header">Register</h2>
+          <div className="form-control">
+            <h3 className="input-header">Username</h3>
+            <input
+              className="input-form"
+              type="text"
+              name="gamertag"
+              placeholder="gamertag"
+              value={this.state.gamertag}
+              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
+            />
+          </div>
+
+          <div className="form-control">
+            <h3 className="input-header">Email</h3>
+            <input
+              className="input-form"
+              // type="text"
+              name="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              onKeyPress={this.handleKeyPress}
+            />
+          </div>
+
+          <div className="form-control">
+            <h3 className="input-header">Password</h3>
+            <input
+              className="input-form"
+              type="text"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-control">
+            <h3 className="input-header">Confirm password</h3>
+            <input
+              name="confirmPassword"
+              placeholder="confirm password"
+              value={this.state.confirmPassword}
+              onKeyPress={this.handleKeyPress}
+              onChange={this.handleChange}
+              className="input-form"
+              type="password"
+            />
+          </div>
+          {/* <button
+              className="register-button"
+              class="btn btn-primary"
+              onClick={this.handleClick}
+            >
               submit
             </button>
-            {this.state.error}
-          </Col>
-        </form>
+            {this.state.error} */}
+
+          {this.state.loading ? (
+            <p className="saving">
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </p>
+          ) : (
+            <div>
+              <button onClick={this.anotherFunction} className="register-btn">
+                Submit
+              </button>
+            </div>
+          )}
+
+          <p style={{ marginTop: 20 }}>
+            Already have an account? <Link to="/login">Log in here...</Link>
+          </p>
+        </div>
       </div>
     );
   }
